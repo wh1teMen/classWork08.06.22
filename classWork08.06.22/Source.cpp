@@ -9,7 +9,7 @@ public:
 		food_ = food;
 		speed_ = speed;
 	}
-	~Animal() {}
+	virtual~Animal() {}
 	void set_name(string name) {
 		name_ = name;
 	}
@@ -59,7 +59,7 @@ private:
 class Dog :public Cat {
 public:
 	Dog() {}
-	
+	Dog(string name, string food, int speed) :Animal(name, food, speed) {}
 	virtual~Dog() {};
 	void sound()override {
 		cout << "Ãàâ-Ãàâ";
