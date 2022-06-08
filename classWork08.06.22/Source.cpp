@@ -25,7 +25,7 @@ public:
 	void set_speed(int speed) {
 		speed_= speed;
 	}
-	int get_speed() {
+	int get_speed()const {
 		return speed_;
 	}
 	virtual void sound() {
@@ -33,6 +33,9 @@ public:
 	}
 	virtual void skill() {
 		 cout << "";
+	}
+	void bite(Animal &other) {
+		cout << " укусил(а) "<<other.get_name();
 	}
 	private:
 		string name_=" ";
@@ -53,13 +56,15 @@ public:
 	void skill()override {
 		cout<<"Играть с клубком";
 	}
+	
 private:
+
 };
 
 class Dog :public Cat {
 public:
 	Dog() {}
-	Dog(string name, string food, int speed) :Animal(name, food, speed) {}
+	Dog(string name, string food, int speed) :Cat(name, food, speed) {}
 	virtual~Dog() {};
 	void sound()override {
 		cout << "Гав-Гав";
@@ -67,6 +72,7 @@ public:
 	void skill()override {
 		cout<< "поддаваться дрессировке";
 	}
+	
 
 private:
 	
@@ -98,7 +104,9 @@ int main(){
 	cout << "\nСкорость: " << cat.get_speed() << endl;
 	cout << "Умение: "; cat.skill();
 	cout << endl;
-	
+	cout << cat.get_name(); cat.bite(dog);
+	cout << endl;
+	cout<< dog.get_name(); cat.bite(cat);
 	
 	
 
